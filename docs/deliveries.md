@@ -56,33 +56,7 @@ To create a delivery for sending Email or SMS messages, use `adobeCampaignClassi
 </soapenv:Envelope>
 ```
 
-#### Sample Request (SMS Delivery)
-
-```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:urn="wso2.connector.adobeCampaignClassic">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <urn:deliveryType>SMS</urn:deliveryType>
-        <urn:subject>Your SMS Label</urn:subject>
-        <urn:content>Your SMS content here</urn:content>
-        <urn:recipients>
-            <![CDATA[
-            <recipients>
-                <recipient>
-                    <phoneNumber>+1234567890</phoneNumber>
-                </recipient>
-                <recipient>
-                    <phoneNumber>+0987654321</phoneNumber>
-                </recipient>
-            </recipients>
-            ]]>
-        </urn:recipients>
-    </soapenv:Body>
-</soapenv:Envelope>
-```
-
-#### Sample Response
+#### Sample Response (SMS Delivery)
 
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
