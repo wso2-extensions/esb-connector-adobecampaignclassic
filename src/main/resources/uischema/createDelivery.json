@@ -1,0 +1,86 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "operationName": "createDelivery",
+  "title": "Create Delivery",
+  "help": "<h1>Create Delivery</h1><p>Create a delivery in Adobe Campaign Classic to send Email or SMS messages.</p>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "AdobeCampaignClassic"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Select the Adobe Campaign Classic connection."
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "deliveryType",
+                    "displayName": "Delivery Type",
+                    "inputType": "combo",
+                    "defaultValue": "Email",
+                    "comboValues": [
+                      "Email",
+                      "SMS"
+                    ],
+                    "required": "true",
+                    "helpTip": "Enter the type of delivery: 'Email' or 'SMS'."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "subject",
+                    "displayName": "Subject",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Subject of the email or label for the SMS."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "content",
+                    "displayName": "Content",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Content of the message."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "recipients",
+                    "displayName": "Recipients",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Recipients of the message. This should be an XML string defining the recipients."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

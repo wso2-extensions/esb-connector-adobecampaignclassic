@@ -1,0 +1,71 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "operationName": "createProfile",
+  "title": "Create Profile",
+  "help": "<h1>Create Profile</h1><p>Creates a new profile in Adobe Campaign Classic.</p>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "AdobeCampaignClassic"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Select the Adobe Campaign Classic connection."
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "email",
+                    "displayName": "Email",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "Email address of the profile."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "firstName",
+                    "displayName": "First Name",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "First name of the profile."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "lastName",
+                    "displayName": "Last Name",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "Last name of the profile."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

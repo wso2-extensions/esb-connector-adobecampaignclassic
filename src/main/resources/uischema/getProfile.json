@@ -1,0 +1,49 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "operationName": "getProfile",
+  "title": "Get Profile",
+  "help": "<h1>Get Profile</h1><p>Retrieves a profile from Adobe Campaign Classic by profile ID.</p>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "AdobeCampaignClassic"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Select the Adobe Campaign Classic connection."
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "profileId",
+                    "displayName": "Profile ID",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "The ID of the profile to retrieve."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
