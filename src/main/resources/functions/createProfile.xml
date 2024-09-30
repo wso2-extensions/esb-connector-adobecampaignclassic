@@ -1,0 +1,92 @@
+<!--
+ ~  Copyright (c) 2024, WSO2 LLC. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+
+<template name="createProfile" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="email" description="Email of the profile"/>
+    <parameter name="firstName" description="First name of the profile"/>
+    <parameter name="lastName" description="Last name of the profile"/>
+    <sequence>
+        <!-- Retrieve the session token stored during login -->
+        <property expression="get-property('operation','acc.session.token')" name="acc.session.token"/>
+
+        <!-- Prepare the SOAP request -->
+        <payloadFactory media-type="xml">
+            <format>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                  xmlns:xtk="urn:xtk:persist"
+                                  xmlns:nms="urn:nms:recipient">
+                    <soapenv:Header>
+                        <xtk:sessiontoken>$1</xtk:sessiontoken>
+                    </soapenv:Header>
+                    <soapenv:Body>
+                        <xtk:Save>
+                            <xtk:entity>
+                                <nms:recipient>
+                                    <email>$2</email>
+                                    <firstName>$3</firstName>
+                                    <lastName>$4</lastName>
+                                </nms:recipient>
+                            </xtk:entity>
+                        </xtk:Save>
+                    </soapenv:Body>
+                </soapenv:Envelope>
+            </format>
+            <args>
+                <arg expression="get-property('acc.session.token')"/>
+                <arg expression="$func:email"/>
+                <arg expression="$func:firstName"/>
+                <arg expression="$func:lastName"/>
+            </args>
+        </payloadFactory>
+
+        <!-- Set HTTP and SOAP properties -->
+        <property name="messageType" scope="axis2" value="text/xml"/>
+        <property name="ContentType" scope="axis2" value="text/xml; charset=UTF-8"/>
+        <property name="SOAPAction" value="xtk:persist#Save"/>
+        <property name="HTTP_METHOD" scope="axis2" value="POST"/>
+        <header name="To"
+                expression="get-property('base.url')"/>
+        <header name="Content-Encoding" action="remove" scope="transport"/>
+
+        <!-- Send the SOAP request -->
+        <call>
+            <endpoint>
+                <default format="soap11">
+                    <timeout>
+                        <duration>60000</duration>
+                        <responseAction>fault</responseAction>
+                    </timeout>
+                    <suspendOnFailure>
+                        <initialDuration>2000</initialDuration>
+                        <progressionFactor>1.0</progressionFactor>
+                        <maximumDuration>3000</maximumDuration>
+                    </suspendOnFailure>
+                </default>
+            </endpoint>
+        </call>
+
+        <!-- Process the response -->
+        <property expression="//soapenv:Body/xtk:SaveResponse"
+                  name="adobe.createProfile.response" scope="default" type="STRING"
+                  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xtk="urn:xtk:persist"/>
+        <log level="full">
+            <property name="CreateProfile Response" expression="get-property('adobe.createProfile.response')"/>
+        </log>
+    </sequence>
+</template>

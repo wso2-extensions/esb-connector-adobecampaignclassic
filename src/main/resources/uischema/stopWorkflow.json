@@ -1,0 +1,49 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "operationName": "stopWorkflow",
+  "title": "Stop Workflow",
+  "help": "<h1>Stop Workflow</h1><p>Stops a specified workflow in Adobe Campaign Classic.</p>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "AdobeCampaignClassic"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Select the Adobe Campaign Classic connection."
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "workflowId",
+                    "displayName": "Workflow ID",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "ID of the workflow to stop."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

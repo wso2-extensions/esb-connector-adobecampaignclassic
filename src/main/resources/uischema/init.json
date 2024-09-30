@@ -1,0 +1,61 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "connectionName": "AdobeCampaignClassic",
+  "title": "Init Adobe Campaign Classic Connection",
+  "help": "<h1>Adobe Campaign Classic Connector</h1> <b>The Adobe Campaign Classic SOAP connector initializes connection through the init operation</b>",
+  "elements": [
+    {
+      "type": "attribute",
+      "value": {
+        "name": "connectionName",
+        "displayName": "Connection Name",
+        "inputType": "string",
+        "defaultValue": "ADOBECAMPAIGNCLASSIC_CONNECTION_1",
+        "required": "true",
+        "helpTip": "The name for the Adobe Campaign Classic connection",
+        "validation": "nameWithoutSpecialCharactors"
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Account Configurations",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "username",
+              "displayName": "Username",
+              "inputType": "stringOrExpresion",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The username for Adobe Campaign Classic."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "password",
+              "displayName": "Password",
+              "inputType": "stringOrExpresion",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The password for Adobe Campaign Classic."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "servername",
+              "displayName": "ServerName",
+              "inputType": "stringOrExpression",
+              "defaultValue": "mycompany.adobe-campaign.com",
+              "required": "true",
+              "helpTip": "The server name of the ACC instance.(https://<serverName>/nl/jsp/soaprouter.jsp)"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

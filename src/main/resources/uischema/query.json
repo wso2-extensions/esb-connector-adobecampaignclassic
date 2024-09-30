@@ -1,0 +1,49 @@
+{
+  "connectorName": "adobeCampaignClassic",
+  "operationName": "query",
+  "title": "Execute Query Definition",
+  "help": "<h1>Execute Query Definition</h1><p>Executes a query definition against Adobe Campaign Classic to retrieve data.</p>",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "AdobeCampaignClassic"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Select the Adobe Campaign Classic connection."
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "queryDef",
+                    "displayName": "Query Definition",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "The XML string of the query definition to execute."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
