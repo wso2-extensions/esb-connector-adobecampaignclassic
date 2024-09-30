@@ -1,7 +1,7 @@
 {
   "name": "Adobe Campaign Classic",
   "owner": "WSO2",
-  "category": "Developer Tools",
+  "category": "Sales and Marketing",
   "documentationUrl": "https://mi.docs.wso2.com/en/latest/reference/connectors/adobe-campaign-classic-connector/adobe-campaign-classic-overview/",
   "description": "The Adobe Campaign Classic Connector allows you to integrate Adobe Campaign Classic functionalities into your integration flows. It supports operations such as creating, updating, and retrieving profiles, managing deliveries (Email/SMS), executing queries, and controlling workflows.",
   "status": "Hidden",
